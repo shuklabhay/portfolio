@@ -81,16 +81,6 @@ export default function About(): JSX.Element {
               >
                 regardless of form or function.
               </Link>{" "}
-              Currently I <strong>hang out @ </strong>
-              <a
-                href="https://condu.it/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="about-contact-link"
-              >
-                <strong>conduit</strong>
-              </a>{" "}
-              <strong>(in sf!!)</strong>.
             </p>
 
             <p style={{ marginTop: 0, marginBottom: "0.5rem" }}>
