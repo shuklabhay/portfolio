@@ -217,6 +217,21 @@ async function main(): Promise<void> {
     );
   }
 
+  const canonicalPaths = [
+    ...new Set(routes.map((route) => route.canonicalPath)),
+  ];
+  const sitemap = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...canonicalPaths.map(
+      (canonicalPath) =>
+        `  <url><loc>${escapeHtmlAttribute(`${SITE_ORIGIN}${canonicalPath}`)}</loc></url>`,
+    ),
+    "</urlset>",
+    "",
+  ].join("\n");
+  await fs.writeFile(path.join(DIST_DIR, "sitemap.xml"), sitemap);
+
   console.log(`Prerendered ${routes.length} routes.`);
 }
 
